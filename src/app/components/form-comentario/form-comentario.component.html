@@ -1,0 +1,40 @@
+<h3 class="mt-3">Comentarios</h3>
+<form [formGroup]="form" (ngSubmit)="guardar()">
+    <div class="mb-3">
+        <label for="titulo" class="form-label">Título</label>
+        <input type="text" class="form-control" id="titulo" placeholder="Ingrese título." formControlName="titulo">
+        <span class="text-danger" *ngIf="form.controls['titulo']?.invalid && form.controls['titulo']?.touched">
+            El <strong>título</strong> es requerido.
+        </span>
+    </div>
+
+    <div class="mb-3">
+        <label for="creador" class="form-label">Creador</label>
+        <input type="email" class="form-control" id="creador" placeholder="Ingrese nombre del creador."
+            formControlName="creador">
+        <span class="text-danger" *ngIf="form.controls['creador']?.invalid && form.controls['creador']?.touched">
+            El <strong>creador</strong> es requerido.
+        </span>
+    </div>
+
+    <div class="mb-3">
+        <label for="texto" class="form-label">Texto</label>
+        <textarea class="form-control" id="texto" rows="3" placeholder="Ingrese el texto."
+            formControlName="texto"></textarea>
+        <span class="text-danger" *ngIf="form.controls['texto']?.invalid && form.controls['texto']?.touched">
+            El <strong>texto</strong> es requerido.
+        </span>
+    </div>
+
+    <div class="mb-3">
+        <label for="fecha" class="form-label">Fecha de Creación</label>
+        <input type="date" class="form-control" id="fecha" formControlName="fecha">
+        <span class="text-danger" *ngIf="form.controls['fecha']?.invalid && form.controls['fecha']?.touched">
+            La <strong>fecha</strong> es requerido.
+        </span>
+    </div>
+    <div class="mb-3">
+        <button type="button" class="btn btn-secondary" routerLink="/">Volver</button>
+        <button type="submit" class="btn btn-primary float-end" [disabled]="form?.invalid">Guardar</button>
+    </div>
+</form>

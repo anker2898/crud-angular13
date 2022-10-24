@@ -1,0 +1,40 @@
+<div class="row mt-3">
+    <div class="col-lg-6">
+        <h3>Listado de comentarios</h3>
+    </div>
+    <div class="col-lg-6">
+        <button class="btn btn-primary float-end" routerLink="/details">Nuevo comentario</button>
+    </div>
+</div>
+<hr>
+<table class="table table-hover mt-3" *ngIf="listaComentario.length > 0">
+    <thead>
+        <tr>
+            <td>Titulo</td>
+            <td>Creador</td>
+            <td>Fecha</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let comentario of listaComentario">
+            <td style="width: 30%;">{{comentario.titulo}}</td>
+            <td style="width: 30%;">{{comentario.creador}}</td>
+            <td style="width: 20%;">{{comentario.fechaCreacion | date: "dd/MM/yyyy"}}</td>
+            <td style="width: 10%;">
+                <button class="btn btn-secondary btn-sm float-end" [routerLink]="['/details/',comentario.id ]">
+                    Editar
+                </button>
+            </td>
+            <td style="width: 10%;">
+                <button class="btn btn-danger btn-sm float-start" (click)="deleteItem(comentario.id)">
+                    Eliminar
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="row mt-5" *ngIf="listaComentario.length == 0">
+    <h4>No hay comentarios para mostrar.</h4>
+</div>
